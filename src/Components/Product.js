@@ -6,10 +6,16 @@ const Product = (props) => {
 
     console.log(props.inventory)
     return(
-            <div>
-                {/* <h1>{name}</h1>
-                <h1>{price}</h1>
-                <a>{imgurl}</a> */}
+            <div className="Product">
+                <div className="product-box">
+                    <p className="product-name"></p>
+                    <p className="product-title"></p>
+                    <p className="product-price"></p>   
+                </div>    
+                <div className="product-button-box">
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </div>    
             </div>
         )
 }

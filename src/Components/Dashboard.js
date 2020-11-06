@@ -36,7 +36,9 @@ class Dashboard extends Component{
         })
     return(
         <div>
-            <ul className="inventory-list">{inventory}</ul>
+            <ul className="inventory-list">
+                {inventory}
+            </ul>
         </div>
         )
     }
