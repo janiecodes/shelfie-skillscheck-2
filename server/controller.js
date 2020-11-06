@@ -5,7 +5,7 @@ module.exports = {
         db.get_inventory()
             .then((inventory) => {
                 res.status(200).send(inventory)
-            }).catch(res.status(400).send('ERROR'))
+            }).catch(error => res.status(400).send(error))
     },
 
     createProduct: (req, res) => {
@@ -15,7 +15,7 @@ module.exports = {
 
         db.create_product(newProduct)
             .then(newProduct => res.status(200).send(newProduct))
-            .catch(err => res.status(500).send(err));
+            .catch(error => res.status(500).send(error));
     },
 
     deleteProduct: (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
         const {id} = req.params
 
         db.delete_product(+id)
-            .then(() => res.sendStatus(200))
+            .then(() => res.send('all good'))
             .catch((error) => res.status(500).send(error))
     },
 
@@ -35,7 +35,17 @@ module.exports = {
         const {name, price, imgurl} = req.body
 
         db.editProduct([+id, name, price, imgurl])
-            .then(editedProduct => res.status(200).send(editedCharacter))
+            .then(() => res.status(200).sendStatus(200))
             .catch(error => res.status(500).send(error))
+    },
+
+    getOneProduct: (req, res) => {
+        const db = req.app.get('db')
+
+        const {id} =req.params
+
+        db.get_one_product(id).then((product) => {
+            res.status(200).send(product)
+        }).catch(error => res.status(400).send(error))
     }
 }

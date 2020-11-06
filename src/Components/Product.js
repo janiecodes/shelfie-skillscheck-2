@@ -1,9 +1,14 @@
 
 import React, {Component} from 'react';
 
-function Product () {
+const Product = (props) => {
+    const {name, price, imgurl} = this.props.inventory
 return(
-            <div>Product</div>
+            <div>
+                <h1>{name}</h1>
+                <h1>{price}</h1>
+                <a>{imgurl}</a>
+            </div>
         )
 }
 

@@ -7,14 +7,35 @@ import {Link} from 'react-router-dom';
 class Dashboard extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            inventory: []
+          }
     }
 
+    componentDidMount = () => {
+        axios
+        .get('/api/inventory')
+        .then((res) => {
+          this.setState({inventory: res.data})
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
 
     
     render(){
-        return(
+        let mappedInventory = []
+        const {createProduct, deleteProduct, editProduct, inventory } = this.props
+        mappedInventory = inventory.map((product) => {
+            return <Product
+                key={inventory.id}
+                product={product}
+                createProduct={createProduct}/>
+        })
+    return(
         <div>Dashboard
-            <Product/>
+            <ul className="inventory-list">{mappedInventory}</ul>
         </div>
         )
     }

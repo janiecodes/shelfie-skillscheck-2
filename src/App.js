@@ -12,21 +12,21 @@ import {HashRouter, Link} from 'react-router-dom';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      inventory: []
-    }
+    // this.state = {
+    //   inventory: []
+    // }
   }
 
-  componentDidMount(){
-    axios
-    .get('/api/inventory')
-    .then((res) => {
-      this.setState({inventory: res.data})
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
+  // componentDidMount = () => {
+  //   axios
+  //   .get('/api/inventory')
+  //   .then((res) => {
+  //     this.setState({inventory: res.data})
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  // }
 
   createProduct = (product) => {
     axios
@@ -63,8 +63,8 @@ class App extends Component {
       <HashRouter>
         <div className="App">
           <Header/>
-          <Form
-          addProduct={this.addProduct}/>
+          {/* <Form
+          addProduct={this.addProduct}/> */}
           <Dashboard inventory={this.state.inventory}/>
           <Link to='/' className='Dashboard'>Dashboard</Link>
           <Link to='/add' className='Form-Add'>Add Inventory</Link>
