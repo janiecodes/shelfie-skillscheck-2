@@ -45,19 +45,19 @@ class Form extends Component {
         return(
             <form className ="form">
                 
-                <a>Image URL:</a>
-                <input value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
+                <p>Image URL:</p>
+                <input type="text" value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
 
-                <a>Product Name:</a>
-                <input value={this.state.name} onChange={this.handleNameChange}/>
+                <p>Product Name:</p>
+                <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
 
-                <a>Price:</a>
-                <input value={this.state.price} onChange={this.handlePriceChange}/>
+                <p>Price:</p>
+                <input type="text" value={this.state.price} onChange={this.handlePriceChange}/>
                 
-      
-                <button onClick={() => this.handleFormReset} type="button">Cancel</button>
-                <button onClick={() => createProduct} type="button">Add To Inventory</button>
-               
+                <div className="form-buttons">
+                    <button onClick={() => this.handleFormReset} type="button">Cancel</button>
+                    <button onClick={() => createProduct} type="button">Add To Inventory</button>
+                </div>
             </form>
         
         )
