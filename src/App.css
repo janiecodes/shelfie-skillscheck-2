@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .header {
+  display: flex;
   height: 35%;
   background-color: #AB2A19;
+  justify-content: flex-start;
+  align-items:center;
+
+}
+
+img {
+  height: 25%;
 }
 
 .shelfie {
   color: white;
   font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
 
 }
 
