@@ -1,18 +1,20 @@
-import { render } from '@testing-library/react';
+
+import axios from 'axios';
 import React, {Component} from 'react';
 import Product from './Product';
+import {Link} from 'react-router-dom';
 
 class Dashboard extends Component{
     constructor(props){
         super(props);
     }
+
+
     
     render(){
-        
-        <Product/>
         return(
         <div>Dashboard
-
+            <Product/>
         </div>
         )
     }

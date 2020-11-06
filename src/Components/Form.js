@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Form extends Component {
     constructor(){
@@ -29,6 +29,10 @@ class Form extends Component {
         this.setState({ toggleEdit: !this.state.toggleEdit });
     }
 
+    componentDidUpdate(){
+
+    }
+
     render(){
         return(
             <div className ="Form">
@@ -38,10 +42,20 @@ class Form extends Component {
                 <button onClick={() => {
                     this.setState({name: this.state.name})
                     this.toggleEdit();
-                }}>Cancel</button>
-                <button>Add</button>
+                }}
+                >Cancel</button>
+                <button 
+                // onClick={() => {
+                    // createProduct(
+                    //     this.state.name,
+                    //     this.state.price,
+                    //     this.state.imgurl
+                    // )
+                    //     this.toggleEdit();
+                // }}
+                >Add To Inventory</button>
             </div>
-            
+        
         )
     }
 }

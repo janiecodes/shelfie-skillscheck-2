@@ -6,3 +6,8 @@ CREATE TABLE inventory(
 );
 
 SELECT * FROM inventory;
+
+INSERT INTO inventory
+(name, price, imgurl)
+VALUES
+(${name}, ${price}, ${imgurl});

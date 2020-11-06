@@ -1,10 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React, {Component} from 'react';
 import Header from './Components/Header'
 import Dashboard from './Components/Dashboard'
 import Form from './Components/Form'
 import axios from 'axios';
+import routes from './routes'
+import {HashRouter, Link} from 'react-router-dom';
+
 
 class App extends Component {
   constructor(props){
@@ -25,13 +28,45 @@ class App extends Component {
     })
   }
 
+  createProduct = (product) => {
+    axios
+      .post('/api/product/', product)
+      .then(res => {
+        this.setState({inventory: res.data})
+      })
+      .catch((error) => console.log(error))
+  }
+
+  deleteProduct = (id) => {
+    axios
+        .delete(`/api/product/${id}`)
+        .then((res) => {
+            this.setState({inventory: res.data})
+        })
+        .catch((error) => console.log(error))
+  }
+
+  editProduct = (id, name, price, imgurl) => {
+    axios 
+      .put(`/api/product/${id}`, {name, price, imgurl})
+      .then((res) => {
+        this.setState({inventory: res.data})
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   render(){
     return (
-      <div className="App">
-        <Header/>
-        <Dashboard/>
-        <Form/>
-      </div>
+      <HashRouter>
+        <div className="App">
+          <Header/>
+          <Link to='/' className='Dashboard'>Dashboard</Link>
+          <Link to='/add' className='Form-Add'>Add Inventory</Link>
+        </div>
+        {routes}
+      </HashRouter>
     );
   }
 }
