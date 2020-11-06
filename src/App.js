@@ -65,7 +65,7 @@ class App extends Component {
           <Header/>
           {/* <Form
           addProduct={this.addProduct}/> */}
-          <Dashboard inventory={this.state.inventory}/>
+          <Dashboard/>
           <Link to='/' className='Dashboard'>Dashboard</Link>
           <Link to='/add' className='Form-Add'>Add Inventory</Link>
         </div>

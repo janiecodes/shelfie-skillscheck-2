@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 
 function Header (){
         return(
-            <div>Header</div>
+            <div className='header'>
+                <h1 className='shelfie'>Shelfie</h1>
+                
+            </div>
         )
 }
 
