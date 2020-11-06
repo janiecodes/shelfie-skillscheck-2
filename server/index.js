@@ -5,16 +5,19 @@ const massive = require('massive');
 const app = express();
 const ctrl = require('./controller');
 
-const port = 3012;
-
-// const {SERVER_PORT, CONNECTION_STRING} =process.env
+const {SERVER_PORT, CONNECTION_STRING} =process.env
 
 app.use(express.json());
 
+massive({
+    connectionString: CONNECTION_STRING,
+    ssl: {rejectUnauthorized:false}
+}).then((db) => {
+    app.set('db', db)
+}).catch(err => console.log(err));
 
 
 
 
 
-
-app.listen(port, () => console.log(`Yahoo! Server listening on Port:${port}`));
+app.listen(SERVER_PORT, () => console.log(`Yahoo! Server listening on Port:${SERVER_PORT}`));
