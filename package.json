@@ -1,6 +1,8 @@
 {
   "name": "shelfie-skillscheck-2",
   "version": "0.1.0",
+  "main": "server/index.js",
+  "proxy": "http://localhost:3012",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
