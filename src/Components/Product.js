@@ -15,6 +15,7 @@ const Product = (props) => {
                 <div className="product-button-box">
                     <button>Delete</button>
                     <button>Edit</button>
+                    {/* <Link to='/edit/:id' className='edit'>Edit</Link> */}
                 </div>    
             </div>
         )
