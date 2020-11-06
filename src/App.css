@@ -1,22 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+.app {
+  display: block;
+
+}
 .header {
-  display: flex;
-  height: 35%;
-  background-color: #AB2A19;
+  /* position: fixed; */
+  width: 100%;
+  height: 100px;
   justify-content: flex-start;
   align-items:center;
+  top: 0;
+  z-index: 2;
 
 }
 
 img {
-  height: 25%;
+  height: 50px;
+  /* position: absolute; */
+  width: 50px;
+  padding: 20px;
+  left: 75px;
 }
 
 .shelfie {
-  color: white;
+  color: black;
+  /* position: absolute; */
   font-family: 'Open Sans', sans-serif;
   font-size: 30px;
-
+  left: 150px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
+.main-box {
+  display: block;
+}
+
+.header-links {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard {
+  color: black;
+  padding: 10px;
+  background-color: #ED6B5A;
+  font-weight: bold;
+}
+
+.form-add {
+  color: black;
+  padding: 10px;
+  background-color: #ED6B5A;
+  font-weight: bold;
+}
+
+
+ .form {
+   display: flex;
+   flex-direction: column;
+   width: 350px;
+   background-color: #3AD886;
+   margin: 10px auto;
+   padding: 15px;
+ }

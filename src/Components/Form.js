@@ -31,9 +31,9 @@ class Form extends Component {
         this.setState({ toggleEdit: !this.state.toggleEdit });
     }
 
-    handleFormRest = (e) => {
+    handleFormReset = (e) => {
         e.preventDefault()
-        e.target.reset()
+        this.setState(this.state)
     }
 
     componentDidUpdate(){
@@ -41,19 +41,22 @@ class Form extends Component {
     }
 
     render(){
-        const {handleNameChange, handlePriceChange, handleImgUrlChange, handleFormReset} = this
         const {createProduct} = this.props
         return(
-            <form className ="Form">
-          
-                <input value={this.state.name} onChange={handleNameChange}/>
-                <input value={this.state.price} onChange={handlePriceChange}/>
-                <input value={this.state.imgurl} onChange={handleImgUrlChange}/>
+            <form className ="form">
+                
+                <a>Image URL:</a>
+                <input value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
+
+                <a>Product Name:</a>
+                <input value={this.state.name} onChange={this.handleNameChange}/>
+
+                <a>Price:</a>
+                <input value={this.state.price} onChange={this.handlePriceChange}/>
                 
       
-                <button onClick={handleFormReset}>Cancel</button>
-                <button onClick={createProduct}
-                >Add To Inventory</button>
+                <button onClick={() => this.handleFormReset} type="button">Cancel</button>
+                <button onClick={() => createProduct} type="button">Add To Inventory</button>
                
             </form>
         

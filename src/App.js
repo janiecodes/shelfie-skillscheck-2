@@ -61,15 +61,17 @@ class App extends Component {
   render(){
     return (
       <HashRouter>
-        <div className="App">
-          <Header/>
-          {/* <Form
-          addProduct={this.addProduct}/> */}
+        <div className="app">
+          <header>
+            <Header/>
+            <nav className='header-links'>
+              <Link to='/' className='dashboard'>Dashboard</Link>
+              <Link to='/add' className='form-add'>Add Inventory</Link>
+            </nav>
+          </header>
           <Dashboard/>
-          <Link to='/' className='Dashboard'>Dashboard</Link>
-          <Link to='/add' className='Form-Add'>Add Inventory</Link>
+          {routes}
         </div>
-        {routes}
       </HashRouter>
     );
   }
