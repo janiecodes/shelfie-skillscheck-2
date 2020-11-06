@@ -13,16 +13,16 @@ class Form extends Component {
         }
     }
 
-    handleNameChange = (event) => {
-        this.setState({name: event.target.value})
+    handleNameChange = (e) => {
+        this.setState({name: e.target.value})
     }
     
-    handlePriceChange = (event) => {
-        this.setState({price: event.target.value})
+    handlePriceChange = (e) => {
+        this.setState({price: e.target.value})
     }
     
-    handleImgUrlChange = (event) => {
-        this.setState({imgurl: event.target.value})
+    handleImgUrlChange = (e) => {
+        this.setState({imgurl: e.target.value})
     }
     
     toggleEdit = () => {
@@ -36,23 +36,18 @@ class Form extends Component {
     render(){
         return(
             <div className ="Form">
-                <input value={this.state.name} onChange={this.handleNameChange}/>
-                <input value={this.state.price} onChange={this.handlePriceChange}/>
-                <input value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
-                <button onClick={() => {
-                    this.setState({name: this.state.name})
-                    this.toggleEdit();
+                <input value={this.state.name} onChange={e => this.handleNameChange(e.target.value)}/>
+                <input value={this.state.price} onChange={e => this.handlePriceChange(e.target.value)}/>
+                <input value={this.state.imgurl} onChange={e => this.handleImgUrlChange(e.target.value)}/>
+                
+                <button>Cancel</button>
+                <button onClick={(e) => {
+                    this.props.addProduct(
+                        this.state.name,
+                        this.state.price,
+                        this.state.imgurl
+                    )
                 }}
-                >Cancel</button>
-                <button 
-                // onClick={() => {
-                    // createProduct(
-                    //     this.state.name,
-                    //     this.state.price,
-                    //     this.state.imgurl
-                    // )
-                    //     this.toggleEdit();
-                // }}
                 >Add To Inventory</button>
             </div>
         
