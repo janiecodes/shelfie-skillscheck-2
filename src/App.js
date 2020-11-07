@@ -70,6 +70,7 @@ class App extends Component {
             </nav>
           </header>
           <Dashboard/>
+          <Form/>
           {routes}
         </div>
       </HashRouter>

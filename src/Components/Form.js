@@ -32,7 +32,7 @@ class Form extends Component {
     }
 
     handleFormReset = () => {
-        this.setState({name: " ", price: " ", price: " "})
+        this.setState({name: " ", price: 0, imgurl: " "})
     }
 
     componentDidUpdate(){
