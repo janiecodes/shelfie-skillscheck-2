@@ -23,17 +23,18 @@ class Dashboard extends Component{
         })
       }
 
-    
     render(){
         let inventoryMapped = []
+        const inventory = this.state.props
         const {createProduct, deleteProduct, editProduct} = this.props
-        inventoryMapped = this.props.inventory.map((product) => {
+        inventoryMapped = inventory.map((product) => {
             return <Product
-                key={this.props.inventory.id}
+                key={inventory.id}
                 product={product}
                 createProduct={createProduct()}
                 />
         })
+
     return(
         <div>
             <ul className="inventory-list">
