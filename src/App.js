@@ -13,20 +13,27 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inventory: []
+      inventory: [
+        {name:"Barbie",
+        price: 100, 
+        imgurl: "EXAMPLE"},
+        {name:"Ken",
+        price: 500, 
+        imgurl: "OTHER"},
+      ]
     }
   }
 
-  // componentDidMount = () => {
-  //   axios
-  //   .get('/api/inventory')
-  //   .then((res) => {
-  //     this.setState({inventory: res.data})
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
+  componentDidMount = () => {
+    axios
+    .get('/api/inventory')
+    .then((res) => {
+      this.setState({inventory: res.data})
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   createProduct = (name, price, imgurl) => {
     axios
@@ -69,7 +76,7 @@ class App extends Component {
               <Link to='/add' className='form-add'>Add Inventory</Link>
             </nav>
           </header>
-          <Dashboard/>
+          <Dashboard inventory={this.state.inventory}/>
           <Form createProduct={this.createProduct}/>
           {routes}
         </div>

@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom';
 class Dashboard extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            inventory: []
-          }
+        // this.state = {
+        //     inventory: []
+        //   }
     }
 
     componentDidMount = () => {
@@ -25,19 +25,19 @@ class Dashboard extends Component{
 
     
     render(){
-        let inventory = []
+        let inventoryMapped = []
         const {createProduct, deleteProduct, editProduct} = this.props
-        inventory = this.state.inventory.map((product) => {
+        inventoryMapped = this.props.inventory.map((product) => {
             return <Product
-                key={this.state.inventory.id}
+                key={this.props.inventory.id}
                 product={product}
-                createProduct={createProduct}
+                createProduct={createProduct()}
                 />
         })
     return(
         <div>
             <ul className="inventory-list">
-                {inventory}
+                {inventoryMapped}
             </ul>
         </div>
         )
