@@ -11,10 +11,10 @@ module.exports = {
     createProduct: (req, res) => {
         const db = req.app.get('db')
 
-        const newProduct = {...req.body}
+        const {name, price, imgurl} = req.body
 
-        db.create_product(newProduct)
-            .then(newProduct => res.status(200).send(newProduct))
+        db.create_product([name, price, imgurl])
+            .then(() => res.sendStatus(200))
             .catch(error => res.status(500).send(error));
     },
 

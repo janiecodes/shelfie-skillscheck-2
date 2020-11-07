@@ -1,4 +1,4 @@
 INSERT INTO inventory
 (name, price, imgurl)
 VALUES
-(${name}, ${price}, ${imgurl});
+($1, $2, $3);

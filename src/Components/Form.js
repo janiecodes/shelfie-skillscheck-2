@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 class Form extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             name: " ",
@@ -32,11 +32,17 @@ class Form extends Component {
     }
 
     handleFormReset = () => {
-        this.setState({name: " ", price: 0, imgurl: " "})
+        this.setState({name: " ", price: " ", imgurl: " "})
     }
 
     componentDidUpdate(){
 
+    }
+
+    handleCreateProduct = () => {
+        const {name, price, imgurl} = this.state
+        this.props.createProduct(name, price, imgurl);
+        this.handleFormReset();
     }
 
     render(){
@@ -54,8 +60,8 @@ class Form extends Component {
                     <input type="text" value={this.state.price} onChange={this.handlePriceChange}/>
                 
                     <div className="form-buttons">
-                        <button onClick={() => this.handleFormReset} type="button">Cancel</button>
-                        <button onClick={() => createProduct} type="button">Add To Inventory</button>
+                        <button onClick={() => this.handleFormReset()} type="button">Cancel</button>
+                        <button onClick={() => this.handleCreateProduct()} type="button">Add To Inventory</button>
                     </div>
                 </form>
             </div>

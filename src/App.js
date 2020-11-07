@@ -12,9 +12,9 @@ import {HashRouter, Link} from 'react-router-dom';
 class App extends Component {
   constructor(props){
     super(props);
-    // this.state = {
-    //   inventory: []
-    // }
+    this.state = {
+      inventory: []
+    }
   }
 
   // componentDidMount = () => {
@@ -28,9 +28,9 @@ class App extends Component {
   //   })
   // }
 
-  createProduct = (product) => {
+  createProduct = (name, price, imgurl) => {
     axios
-      .post('/api/product/', product)
+      .post('/api/product/', {name, price, imgurl})
       .then(res => {
         this.setState({inventory: res.data})
       })
@@ -70,7 +70,7 @@ class App extends Component {
             </nav>
           </header>
           <Dashboard/>
-          <Form/>
+          <Form createProduct={this.createProduct}/>
           {routes}
         </div>
       </HashRouter>
