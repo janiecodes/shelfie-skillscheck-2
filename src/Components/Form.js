@@ -31,9 +31,8 @@ class Form extends Component {
         this.setState({ toggleEdit: !this.state.toggleEdit });
     }
 
-    handleFormReset = (e) => {
-        e.preventDefault()
-        this.setState(this.state)
+    handleFormReset = () => {
+        this.setState({name: " ", price: " ", price: " "})
     }
 
     componentDidUpdate(){
@@ -43,22 +42,23 @@ class Form extends Component {
     render(){
         const {createProduct} = this.props
         return(
-            <form className ="form">
-                
-                <p>Image URL:</p>
-                <input type="text" value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
+            <div className ="form">
+                <form>
+                    <p>Image URL:</p>
+                    <input type="text" value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
 
-                <p>Product Name:</p>
-                <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+                    <p>Product Name:</p>
+                    <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
 
-                <p>Price:</p>
-                <input type="text" value={this.state.price} onChange={this.handlePriceChange}/>
+                    <p>Price:</p>
+                    <input type="text" value={this.state.price} onChange={this.handlePriceChange}/>
                 
-                <div className="form-buttons">
-                    <button onClick={() => this.handleFormReset} type="button">Cancel</button>
-                    <button onClick={() => createProduct} type="button">Add To Inventory</button>
-                </div>
-            </form>
+                    <div className="form-buttons">
+                        <button onClick={() => this.handleFormReset} type="button">Cancel</button>
+                        <button onClick={() => createProduct} type="button">Add To Inventory</button>
+                    </div>
+                </form>
+            </div>
         
         )
     }
