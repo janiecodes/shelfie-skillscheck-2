@@ -1,9 +1,9 @@
 
 import './App.css';
 import React, {Component} from 'react';
-import Header from './Components/Header'
-import Dashboard from './Components/Dashboard'
-import Form from './Components/Form'
+import Header from './Components/Header/Header'
+import Dashboard from './Components/Dashboard/Dashboard'
+import Form from './Components/Form/Form'
 import axios from 'axios';
 import routes from './routes'
 import {HashRouter, Link} from 'react-router-dom';
@@ -12,6 +12,7 @@ import {HashRouter, Link} from 'react-router-dom';
 class App extends Component {
   constructor(props){
     super(props);
+    
     this.state = {
       inventory: [
         {name:"Barbie",
@@ -20,8 +21,8 @@ class App extends Component {
         {name:"Ken",
         price: 500, 
         imgurl: "OTHER"},
-      ]
-    }
+        ]
+      }
   }
 
   componentDidMount = () => {

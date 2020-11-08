@@ -41,12 +41,12 @@ class Form extends Component {
 
     handleCreateProduct = () => {
         const {name, price, imgurl} = this.state
-        this.props.createProduct(name, price, imgurl);
+        const {createProduct} = this.props
+        createProduct(name, price, imgurl);
         this.handleFormReset();
     }
 
     render(){
-        const {createProduct} = this.props
         return(
             <div className ="form">
                 <form>
