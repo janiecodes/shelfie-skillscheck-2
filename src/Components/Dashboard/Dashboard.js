@@ -21,19 +21,19 @@ class Dashboard extends Component{
       }
 
     render(){
-        // const {inventory} = this.props
-        const inventoryMapped = this.props.inventory.map((product) => (
+        const {inventory} = this.props
+        console.log(this.props.inventory)
+        const inventoryMapped = inventory.map((product) => (
+
             <div className="inventory-mapped" key={product.id}>
-                
                 <div>{product.name}</div>
                 <div>{product.price}</div>
             </div>
         ))
-
-    
     return(
         <div className="inventory-list">
-               <Product products={inventoryMapped}/>
+           <Product products={inventoryMapped}/>
+            
         </div>
         )
     }

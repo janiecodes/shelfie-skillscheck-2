@@ -15,13 +15,11 @@ class App extends Component {
     
     this.state = {
       inventory: [
-        {name:"Barbie",
-        price: 100, 
-        imgurl: "EXAMPLE"},
-        {name:"Ken",
-        price: 500, 
-        imgurl: "OTHER"},
-        ]
+        {id: 1,
+        name: "toy",
+        price: 10,
+        imgurl: "example"}
+    ]
       }
   }
 
@@ -68,7 +66,6 @@ class App extends Component {
 
   render(){
     return (
-      <HashRouter>
         <div className="app">
           <header>
             <Header/>
@@ -81,7 +78,6 @@ class App extends Component {
           <Form createProduct={this.createProduct}/>
           {routes}
         </div>
-      </HashRouter>
     );
   }
 }
