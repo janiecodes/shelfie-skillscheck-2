@@ -14,16 +14,7 @@ class App extends Component {
     super(props);
     
     this.state = {
-      inventory: [
-        {name: "firsttoy",
-        price: 10,
-        imgurl: "firstexample"},
-        
-        {name: "secondtoy",
-        price: 20,
-        imgurl: "secondexample"},
-
-      ]
+      inventory: []
     }
   }
 
