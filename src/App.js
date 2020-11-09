@@ -15,12 +15,16 @@ class App extends Component {
     
     this.state = {
       inventory: [
-        {id: 1,
-        name: "toy",
+        {name: "firsttoy",
         price: 10,
-        imgurl: "example"}
-    ]
-      }
+        imgurl: "firstexample"},
+        
+        {name: "secondtoy",
+        price: 20,
+        imgurl: "secondexample"},
+
+      ]
+    }
   }
 
   componentDidMount = () => {
@@ -66,6 +70,7 @@ class App extends Component {
 
   render(){
     return (
+      <HashRouter>
         <div className="app">
           <header>
             <Header/>
@@ -78,6 +83,7 @@ class App extends Component {
           <Form createProduct={this.createProduct}/>
           {routes}
         </div>
+      </HashRouter>
     );
   }
 }
