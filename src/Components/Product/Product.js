@@ -1,29 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
-class Product extends Component{
-    constructor(props){
-        super(props)
-    }
+export default function Product(props) {
+  let { id, name, price, imgurl } = props.product;
 
-
-render(){
-    const {products} = this.props
-        return(
-            <div className="product">
-                {products}
-            </div>
-        )
-    }
+  return (
+    <div className='product'>
+      <div className='product-imgurl'>{imgurl}</div>
+      <div className='product-box'>
+        <p className='product-name'>{name}</p>
+        <p className='product-price'>${price}</p>
+      </div>
+      <div className='product-button_box'>
+        <button className="delete-button" onClick={()=> props.deleteProduct(id)}>Delete</button>
+        <button className="edit-button" onClick={() => props.editProduct(props.product)}>Edit</button>
+      </div>
+    </div>
+  )
 }
-// const Product = (props) => {
-//     const {products} = this.props
-
-//     return(
-//             <div className="Product">
-//                 {products}
-//             </div>
-//         )
-// }
-
-export default Product;
