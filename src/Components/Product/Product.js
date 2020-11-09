@@ -7,7 +7,7 @@ class Product extends Component{
     }
 
 
-    render(){
+render(){
     const {products} = this.props
         return(
             <div className="product">

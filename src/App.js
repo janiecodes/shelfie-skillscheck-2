@@ -12,53 +12,30 @@ import {HashRouter, Link} from 'react-router-dom';
 class App extends Component {
   constructor(props){
     super(props);
-    
+
     this.state = {
-      inventory: [
-      //   {
-      //     "id": 1,
-      //     "name": "toy",
-      //     "price": 10,
-      //     "imgurl": "example"
-      // },
-      // {
-      //     "id": 2,
-      //     "name": "toy2",
-      //     "price": 20,
-      //     "imgurl": "example2"
-      // }
-      ]
+      inventory: []
     }
+    
   }
 
-  componentDidMount = () => {
-    axios
-    .get('/api/inventory')
-    .then((res) => {
-      this.setState({inventory: res.data})
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
+  // createProduct = (name, price, imgurl) => {
+  //   axios
+  //     .post('/api/product/', {name, price, imgurl})
+  //     .then(res => {
+  //       this.setState({inventory: res.data})
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
-  createProduct = (name, price, imgurl) => {
-    axios
-      .post('/api/product/', {name, price, imgurl})
-      .then(res => {
-        this.setState({inventory: res.data})
-      })
-      .catch((error) => console.log(error))
-  }
-
-  deleteProduct = (id) => {
-    axios
-        .delete(`/api/product/${id}`)
-        .then((res) => {
-            this.setState({inventory: res.data})
-        })
-        .catch((error) => console.log(error))
-  }
+  // deleteProduct = (id) => {
+  //   axios
+  //       .delete(`/api/product/${id}`)
+  //       .then((res) => {
+  //           this.setState({inventory: res.data})
+  //       })
+  //       .catch((error) => console.log(error))
+  // }
 
   editProduct = (id, name, price, imgurl) => {
     axios 
@@ -72,19 +49,34 @@ class App extends Component {
   }
 
 
+  componentDidMount = () => {
+    this.getInventory()
+  }
+
+  
+  getInventory = () => {
+  axios
+    .get('/api/inventory')
+    .then((res) => {
+      this.setState({inventory: res.data})
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   render(){
-    console.log(this.state.inventory)
+
     return (
-      <HashRouter>
         <div className="app">
-          <header>
+          {/* <header>
             <Header/>
-          </header>
+          </header> */}
           <Dashboard inventory={this.state.inventory}/>
-          <Form createProduct={this.createProduct}/>
-          {routes}
+          <Form getInventory={this.getInventory}/>
+          {/* {routes} */}
         </div>
-      </HashRouter>
+
     );
   }
 }

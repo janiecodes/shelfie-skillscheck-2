@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
@@ -10,6 +11,16 @@ class Form extends Component {
             price: 0,
             imgurl:" ",
             toggleEdit: false,
+        }
+    }
+    componentDidMount(){
+        let {id} = this.props.match.params;
+        if (id) {
+            axios
+                .get(`/api/product/${id}`)
+                .then(res => {
+                    this.setState({...res.data, toggleEdit: true})
+                }).catch((error) => console.log(error))
         }
     }
 
@@ -51,13 +62,13 @@ class Form extends Component {
             <div className ="form">
                 <form>
                     <p>Image URL:</p>
-                    <input type="text" value={this.state.imgurl} onChange={this.handleImgUrlChange}/>
+                    <input type="text" value={this.state.imgurl} onChange={event => this.handleImgUrlChange(event.target.value)}/>
 
                     <p>Product Name:</p>
-                    <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+                    <input type="text" value={this.state.name} onChange={event => this.handleNameChange(event.target.value)}/>
 
                     <p>Price:</p>
-                    <input type="text" value={this.state.price} onChange={this.handlePriceChange}/>
+                    <input type="text" value={this.state.price} onChange={event => this.handlePriceChange(event.target.value)}/>
                 
                     <div className="form-buttons">
                         <button onClick={() => this.handleFormReset()} type="button">Cancel</button>
