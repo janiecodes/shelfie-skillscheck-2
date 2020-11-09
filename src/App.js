@@ -14,7 +14,20 @@ class App extends Component {
     super(props);
     
     this.state = {
-      inventory: []
+      inventory: [
+        {
+          "id": 1,
+          "name": "toy",
+          "price": 10,
+          "imgurl": "example"
+      },
+      {
+          "id": 2,
+          "name": "toy2",
+          "price": 20,
+          "imgurl": "example2"
+      }
+      ]
     }
   }
 
@@ -60,6 +73,7 @@ class App extends Component {
 
 
   render(){
+    console.log(this.state.inventory)
     return (
       <HashRouter>
         <div className="app">

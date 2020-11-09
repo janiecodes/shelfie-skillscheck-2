@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, {Component} from 'react';
 import Product from '../Product/Product';
@@ -22,7 +21,7 @@ class Dashboard extends Component{
 
     render(){
         const {inventory} = this.props
-        console.log(this.props.inventory)
+        
         const inventoryMapped = inventory.map((product) => (
 
             <div className="inventory-mapped" key={product.id}>
