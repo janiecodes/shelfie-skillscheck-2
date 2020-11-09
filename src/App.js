@@ -15,18 +15,18 @@ class App extends Component {
     
     this.state = {
       inventory: [
-        {
-          "id": 1,
-          "name": "toy",
-          "price": 10,
-          "imgurl": "example"
-      },
-      {
-          "id": 2,
-          "name": "toy2",
-          "price": 20,
-          "imgurl": "example2"
-      }
+      //   {
+      //     "id": 1,
+      //     "name": "toy",
+      //     "price": 10,
+      //     "imgurl": "example"
+      // },
+      // {
+      //     "id": 2,
+      //     "name": "toy2",
+      //     "price": 20,
+      //     "imgurl": "example2"
+      // }
       ]
     }
   }
@@ -79,10 +79,6 @@ class App extends Component {
         <div className="app">
           <header>
             <Header/>
-            <nav className='header-links'>
-              <Link to='/' className='dashboard'>Dashboard</Link>
-              <Link to='/add' className='form-add'>Add Inventory</Link>
-            </nav>
           </header>
           <Dashboard inventory={this.state.inventory}/>
           <Form createProduct={this.createProduct}/>

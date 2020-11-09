@@ -25,8 +25,14 @@ class Dashboard extends Component{
         const inventoryMapped = inventory.map((product) => (
 
             <div className="inventory-mapped" key={product.id}>
-                <div>{product.name}</div>
-                <div>{product.price}</div>
+                <div className="product-img"></div>
+                <div className="product-name">{product.name}</div>
+                <div className="product-price">{product.price}</div>
+                <div className="product-buttons">
+                    <button className="delete-button">Delete</button>
+                    <button className="edit-button">Edit</button>
+                </div>
+
             </div>
         ))
     return(

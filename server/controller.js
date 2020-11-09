@@ -24,7 +24,7 @@ module.exports = {
         const {id} = req.params
 
         db.delete_product(+id)
-            .then(() => res.send('all good'))
+            .then(() => res.sendStatus(200))
             .catch((error) => res.status(500).send(error))
     },
 
