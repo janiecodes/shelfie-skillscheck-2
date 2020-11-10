@@ -1,11 +1,11 @@
 module.exports = {
-    getInventoryList: (req, res) => {
+    getInventory: (req, res) => {
         const db = req.app.get('db')
 
         db.get_inventory()
             .then((inventory) => {
                 res.status(200).send(inventory)
-            }).catch(error => res.status(400).send(error))
+            }).catch(error => res.status(500).send(error))
     },
 
     createProduct: (req, res) => {
@@ -44,8 +44,8 @@ module.exports = {
 
         const {id} =req.params
 
-        db.get_one_product(id).then((product) => {
+        db.get_one_product(+id).then((product) => {
             res.status(200).send(product)
-        }).catch(error => res.status(400).send(error))
+        }).catch(error => res.status(500).send(error))
     }
 }

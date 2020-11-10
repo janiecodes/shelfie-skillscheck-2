@@ -13,10 +13,10 @@ class Dashboard extends Component {
   }
   
   componentDidMount = () => {
-    this.getInventoryList();
+    this.getInventory();
   }
   
-  getInventoryList = ()=> {
+  getInventory = ()=> {
     axios.get('/api/inventory')
       .then(res => this.setState({ inventory: res.data }))
   }
@@ -24,7 +24,7 @@ class Dashboard extends Component {
   deleteProduct = (id) => {
     axios
       .delete(`/api/product/${id}`)
-      .then((res) => this.props.getInventoryList())
+      .then((res) => this.props.getInventory())
       .catch(error => console.log(error))
   }
 
