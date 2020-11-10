@@ -27,7 +27,8 @@ class Dashboard extends Component {
       .then((res) => this.props.getInventoryList())
       .catch(error => console.log(error))
   }
-render() {
+
+  render() {
     return (
       <div className="inventory-list">
         {this.state.inventory.map((product) => {

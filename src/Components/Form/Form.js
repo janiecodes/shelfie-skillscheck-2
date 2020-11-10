@@ -62,7 +62,7 @@ class Form extends Component {
         })
         .catch(error => console.log(error))
     } else {
-      console.log("BAD SUBMIT");
+      console.log("ERROR");
     }
   }
 
@@ -81,7 +81,7 @@ class Form extends Component {
         })
         .catch(error => console.log(error))
     } else {
-      console.log("BAD EDIT");
+      console.log("ERROR");
     }
   }
 

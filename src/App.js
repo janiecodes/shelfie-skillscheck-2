@@ -36,8 +36,6 @@ class App extends Component {
           <Header/>
         </header>
           {routes}
-          {/* <Form product={this.state.currentProduct} editProduct={this.editProduct} getInventory={this.getInventory} />
-          <Dashboard inventory={this.state.inventory} editProduct={this.editProduct} getInventory={this.getInventory} /> */}
       </div>
       );
     }
