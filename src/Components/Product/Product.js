@@ -13,7 +13,7 @@ export default function Product(props) {
       </div>
       <div className='product-button_box'>
         <button className="delete-button" onClick={()=> props.deleteProduct(id)}>Delete</button>
-        <button className="edit-button" onClick={() => props.editProduct(props.product)}>Edit</button>
+        <button className="edit-button" onClick={() => props.history.push(`/edit/${props.product.id}`)}>Edit</button>
       </div>
     </div>
   )

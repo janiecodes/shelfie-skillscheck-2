@@ -115,3 +115,6 @@ class Form extends Component {
 }
 
 export default Form;
+
+//handleChange = (event) => {
+// this.setState({[event.target.name]: event.target.value})}

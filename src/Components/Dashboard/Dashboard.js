@@ -17,21 +17,24 @@ class Dashboard extends Component {
   }
   
   getInventory = ()=> {
-    axios.get('/api/inventory')
+    axios
+      .get('/api/inventory')
       .then(res => this.setState({ inventory: res.data }))
+      .catch((error) => console.log(error))
   }
 
   deleteProduct = (id) => {
     axios
       .delete(`/api/product/${id}`)
-      .then((res) => this.props.getInventory())
+      .then((res) => this.getInventory())
       .catch(error => console.log(error))
   }
 
   render() {
+    const {inventory} = this.state 
     return (
       <div className="inventory-list">
-        {this.state.inventory.map((product) => {
+        {inventory.map((product) => {
           return <Product key={product.id} product={product} deleteProduct={this.deleteProduct} />
         })}
       </div>
@@ -40,3 +43,16 @@ class Dashboard extends Component {
 } 
 
 export default Dashboard;
+
+
+// render() {
+//   const {inventory} = this.state 
+//   const mappedInventory = inventory.map((product) => <Product key={product.id} product={product} deleteProduct={this.deleteProduct}/>
+//   )
+//   return (
+//     <div className="inventory-list">
+//       {mappedInventory}
+//     </div>
+//   );
+// }
+// } 
