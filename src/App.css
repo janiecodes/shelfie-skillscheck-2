@@ -83,6 +83,12 @@ img {
 
  }
 
+ .product-top-box {
+  width: 450px;
+
+
+}
+
  .product-buttons {
    display: flex;
    justify-content:space-between;

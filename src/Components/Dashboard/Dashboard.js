@@ -35,7 +35,7 @@ class Dashboard extends Component {
     return (
       <div className="inventory-list">
         {inventory.map((product) => {
-          return <Product key={product.id} product={product} deleteProduct={this.deleteProduct} />
+          return <Product key={product.id} product={product} deleteProduct={this.deleteProduct}/>
         })}
       </div>
     );
