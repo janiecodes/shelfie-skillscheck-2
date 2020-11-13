@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 
 
 function Product(props) {
@@ -19,4 +20,4 @@ function Product(props) {
   )
 }
 
-export default Product;
+export default withRouter(Product);
