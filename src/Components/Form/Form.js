@@ -20,9 +20,7 @@ class Form extends Component {
     if(id) {
       axios
         .get(`/api/product/${id}`)
-        .then((res) => {
-          this.setState({...res.data, toggleEdit: true})
-        })
+        .then((res) => {this.setState({...res.data, toggleEdit: true})})
     }
   }
 
@@ -50,40 +48,24 @@ class Form extends Component {
 }
 
   handleSubmit = () => {
-    let { name, price, imgurl } = this.state;
-    if (name) {
-      let product = {
-        name,
-        price: this.handlePriceChange(price),
-        imgurl
-      }
-      axios.post('/api/product', product)
-        .then(res => {
-          this.props.history.push('/');
-        })
-        .catch(error => console.log(error))
-    } else {
-      console.log("Form Component Error - Submit");
-    }
+    const {name, price, imgurl} = this.state;
+      axios
+        .post('/api/product', {name, price, imgurl})
+        .then(res => {this.props.history.push('/')})
+        .catch(error => console.log('handleSubmit error'))
+
   }
 
 
   handleEdit = () => {
     let { id, name, price, imgurl } = this.state;
-    if (name) {
-      let product = {
-        name,
-        price: this.handlePriceChange(price),
-        imgurl
-      }
-      axios.put(`/api/product/${id}`, product)
+
+      axios
+        .put(`/api/product/${id}`, {name, price, imgurl})
         .then(res => {
           this.props.history.push('/')
         })
         .catch(error => console.log(error))
-    } else {
-      console.log("Form Component Error - Edit");
-    }
   }
 
   handleFormReset = () => {
@@ -95,12 +77,10 @@ class Form extends Component {
     })
 }
 
-
   render() {
     const {name, price, imgurl, toggleEdit} = this.state
     return (
       <div className='form'>
-
             <p>Image URL:</p>
                 <input type='text' value={imgurl} onChange={event => this.handleImgUrlChange(event.target.value)} />
             <p>Product Name:</p>

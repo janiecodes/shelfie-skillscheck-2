@@ -19,7 +19,7 @@ class Dashboard extends Component {
     axios
       .get('/api/inventory')
       .then(res => this.setState({ inventory: res.data }))
-      .catch((error) => console.log('DASHBOARD ERROR'))
+      .catch((error) => console.log(error))
   }
 
   deleteProduct = (id) => {
@@ -30,10 +30,9 @@ class Dashboard extends Component {
   }
 
   render() {
-    const {inventory} = this.state 
     return (
       <div className="inventory-list">
-        {inventory.map((product) => {
+        {this.state.inventory.map((product) => {
           return <Product key={product.id} product={product} deleteProduct={this.deleteProduct}/>
         })}
       </div>
