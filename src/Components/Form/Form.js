@@ -83,11 +83,12 @@ class Form extends Component {
     const {name, price, imgurl, toggleEdit} = this.state
     return (
       <div className='form'>
-            <p>Image URL:</p>
+            <img className='form-image'/>
+            <p className='form-image-url-title'>Image URL:</p>
                 <input type='text' value={imgurl} onChange={event => this.handleImgUrlChange(event.target.value)} />
-            <p>Product Name:</p>
+            <p className='form-product-name-title'>Product Name:</p>
                 <input type='text' value={name} onChange={event => this.handleNameChange(event.target.value)} />
-            <p>Price:</p>
+            <p className='form-price-title'>Price:</p>
                 <input type='text' value={price} onChange={event => this.handlePriceChange(event.target.value)} />
         
         <div className='form-buttons'>
