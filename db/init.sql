@@ -15,7 +15,7 @@ VALUES
 SELECT * FROM inventory
 WHERE id = $1;
 
-UPDATE invetory
+UPDATE inventory
 SET name = $2,
     price = $3,
     imgurl = $4,

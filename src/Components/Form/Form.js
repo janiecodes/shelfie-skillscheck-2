@@ -54,8 +54,7 @@ class Form extends Component {
         .catch(error => console.log(error))
   }
 
-  handleEdit = (id) => {
-    let {name, price, imgurl } = this.state;
+  handleEdit = (id, name, price, imgurl) => {
       axios
         .put(`/api/product/${id}`, {name, price, imgurl})
         .then(res => { this.props.history.push('/')})

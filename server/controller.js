@@ -34,7 +34,7 @@ module.exports = {
         const {id} = req.params
         const {name, price, imgurl} = req.body
 
-        db.editProduct([+id, name, price, imgurl])
+        db.edit_product([+id, name, price, imgurl])
             .then(() => res.status(200).sendStatus(200))
             .catch(error => res.status(500).send(error))
     },
@@ -42,10 +42,10 @@ module.exports = {
     getOneProduct: (req, res) => {
         const db = req.app.get('db')
 
-        const {id} =req.params
+        const {id} = req.params
 
-        db.get_one_product(+id).then((product) => {
-            res.status(200).send(product)
-        }).catch(console.log('problem'))
+        db.get_one_product(id)
+            .then((product) => {res.status(200).send(product)})
+            .catch(error => res.status(500).send(error))
     }
 }

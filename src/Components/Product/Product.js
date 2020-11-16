@@ -8,7 +8,7 @@ function Product(props) {
   return (
     <div className='product-top-box'>
       <div className='product-imgurl'>{imgurl}</div>
-      
+
       <div className='product-bottom-box'>
         <p className='product-name'>{name}</p>
         <p className='product-price'>${price}</p>
