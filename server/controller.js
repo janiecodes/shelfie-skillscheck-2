@@ -34,8 +34,9 @@ module.exports = {
         const {id} = req.params
         const {name, price, imgurl} = req.body
 
-        db.edit_product([+id, name, price, imgurl])
-            .then(() => res.status(200).sendStatus(200))
+
+        db.edit_product(+id, name, price, imgurl)
+            .then(() => res.sendStatus(200))
             .catch(error => res.status(500).send(error))
     },
 
@@ -44,7 +45,7 @@ module.exports = {
 
         const {id} = req.params
 
-        db.get_one_product(id)
+        db.get_one_product(+id)
             .then((product) => {res.status(200).send(product)})
             .catch(error => res.status(500).send(error))
     }

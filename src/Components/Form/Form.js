@@ -10,7 +10,6 @@ class Form extends Component {
       price: 0,
       imgurl: '',
       toggleEdit: false,
-
     }
   }
 
@@ -54,12 +53,18 @@ class Form extends Component {
         .catch(error => console.log(error))
   }
 
-  handleEdit = (id, name, price, imgurl) => {
+  editProduct = () => {
+    const {name, price, imgurl} = this.state
+    const {id} = this.props.match.params;
+    console.log(id)
       axios
         .put(`/api/product/${id}`, {name, price, imgurl})
-        .then(res => { this.props.history.push('/')})
+        .then(res => {this.props.history.push('/')})
         .catch(error => console.log(error))
   }
+  //then(res => this.setState({})
+
+
 
   handleFormReset = () => {
     if (this.props.match.params.id) {
@@ -88,7 +93,7 @@ class Form extends Component {
         <div className='form-buttons'>
             <button className="cancel-button" onClick={() => this.handleFormReset()} type="button">Cancel</button>
             {toggleEdit
-                ? <button className="save-button" onClick={() => this.handleEdit()}>Save Changes</button>
+                ? <button className="save-button" onClick={() => this.editProduct()}>Save Changes</button>
                 : <button className="add-button" onClick={() => this.handleSubmit()}>Add to Inventory</button>
             }
         </div>
