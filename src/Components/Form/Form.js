@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
   constructor(props) {
@@ -15,14 +16,14 @@ class Form extends Component {
   }
 
   componentDidMount(){
-      let {id} = this.props.match.params;
-      if(id) {
-          axios
-          .get(`/api/product/${id}`)
-          .then((res) => {
-              this.setState({...res.data, toggleEdit: true})
-          })
-      }
+    let {id} = this.props.match.params;
+    if(id) {
+      axios
+        .get(`/api/product/${id}`)
+        .then((res) => {
+          this.setState({...res.data, toggleEdit: true})
+        })
+    }
   }
 
   componentDidUpdate(oldProps) {
@@ -48,7 +49,7 @@ class Form extends Component {
 
 }
 
-  handleSubmit() {
+  handleSubmit = () => {
     let { name, price, imgurl } = this.state;
     if (name) {
       let product = {
@@ -62,12 +63,12 @@ class Form extends Component {
         })
         .catch(error => console.log(error))
     } else {
-      console.log("ERROR");
+      console.log("Form Component Error - Submit");
     }
   }
 
 
-  handleEdit() {
+  handleEdit = () => {
     let { id, name, price, imgurl } = this.state;
     if (name) {
       let product = {
@@ -81,40 +82,46 @@ class Form extends Component {
         })
         .catch(error => console.log(error))
     } else {
-      console.log("ERROR");
+      console.log("Form Component Error - Edit");
     }
   }
 
   handleFormReset = () => {
-    this.setState({name: " ", price: 0, imgurl: " "})
+    this.setState({
+      name: " ", 
+      price: 0, 
+      imgurl: " ", 
+      toggleEdit: false
+    })
 }
 
 
   render() {
+    const {name, price, imgurl, toggleEdit} = this.state
     return (
       <div className='form'>
-        <form>
+
             <p>Image URL:</p>
-                <input type='text' value={this.state.imgurl} onChange={event => this.handleImgUrlChange(event.target.value)} />
+                <input type='text' value={imgurl} onChange={event => this.handleImgUrlChange(event.target.value)} />
             <p>Product Name:</p>
-                <input type='text' value={this.state.name} onChange={event => this.handleNameChange(event.target.value)} />
+                <input type='text' value={name} onChange={event => this.handleNameChange(event.target.value)} />
             <p>Price:</p>
-                <input type='text' value={this.state.price} onChange={event => this.handlePriceChange(event.target.value)} />
+                <input type='text' value={price} onChange={event => this.handlePriceChange(event.target.value)} />
         
         <div className='form-buttons'>
             <button className="cancel-button" onClick={() => this.handleFormReset()} type="button">Cancel</button>
-            {this.state.toggleEdit
+            {toggleEdit
                 ? <button className="save-button" onClick={() => this.handleEdit()}>Save Changes</button>
                 : <button className="add-button" onClick={() => this.handleSubmit()}>Add to Inventory</button>
             }
         </div>
-        </form>
+
       </div>
     );
   }
 }
 
-export default Form;
+export default withRouter(Form);
 
 //handleChange = (event) => {
 // this.setState({[event.target.name]: event.target.value})}

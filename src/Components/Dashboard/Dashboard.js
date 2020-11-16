@@ -6,8 +6,7 @@ import Product from '../Product/Product';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-
-    this.state ={
+    this.state = {
         inventory: []
     }
   }
@@ -16,11 +15,11 @@ class Dashboard extends Component {
     this.getInventory();
   }
   
-  getInventory = ()=> {
+  getInventory = () => {
     axios
       .get('/api/inventory')
       .then(res => this.setState({ inventory: res.data }))
-      .catch((error) => console.log(error))
+      .catch((error) => console.log('DASHBOARD ERROR'))
   }
 
   deleteProduct = (id) => {

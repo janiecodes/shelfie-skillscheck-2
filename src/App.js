@@ -1,21 +1,19 @@
-import axios from 'axios'
+
 import React, {Component} from 'react';
 import './App.css';
-import {HashRouter, Switch, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import routes from './routes'
   
 import Header from './Components/Header/Header';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Form from './Components/Form/Form';
+
   
 class App extends Component {
-  constructor(props) {
-  super(props);
+
     // this.state = {
     //   inventory: [],
     //   currentProduct: {}
     // }
-  }
+
     // componentDidMount = () => {
     //   this.getInventoryList();
     // }
@@ -37,9 +35,9 @@ class App extends Component {
         </header>
           {routes}
       </div>
-      );
-    }
+    );
   }
+}
   
 
-export default App;
+export default withRouter(App);
