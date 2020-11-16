@@ -30,9 +30,10 @@ class Dashboard extends Component {
   }
 
   render() {
+    const {inventory} = this.state
     return (
       <div className="inventory-list">
-        {this.state.inventory.map((product) => {
+        {inventory.map((product) => {
           return <Product key={product.id} product={product} deleteProduct={this.deleteProduct}/>
         })}
       </div>

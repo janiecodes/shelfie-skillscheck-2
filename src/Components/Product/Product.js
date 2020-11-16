@@ -3,11 +3,12 @@ import {withRouter} from 'react-router-dom'
 
 
 function Product(props) {
-  let { id, name, price, imgurl } = props.product;
+  let {id, name, price, imgurl} = props.product;
 
   return (
     <div className='product-top-box'>
       <div className='product-imgurl'>{imgurl}</div>
+      
       <div className='product-bottom-box'>
         <p className='product-name'>{name}</p>
         <p className='product-price'>${price}</p>

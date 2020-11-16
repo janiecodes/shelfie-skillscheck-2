@@ -6,7 +6,6 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: null,
       name: '',
       price: 0,
       imgurl: '',
@@ -52,30 +51,29 @@ class Form extends Component {
       axios
         .post('/api/product', {name, price, imgurl})
         .then(res => {this.props.history.push('/')})
-        .catch(error => console.log('handleSubmit error'))
-
+        .catch(error => console.log(error))
   }
 
-
-  handleEdit = () => {
-    let { id, name, price, imgurl } = this.state;
-
+  handleEdit = (id) => {
+    let {name, price, imgurl } = this.state;
       axios
         .put(`/api/product/${id}`, {name, price, imgurl})
-        .then(res => {
-          this.props.history.push('/')
-        })
+        .then(res => { this.props.history.push('/')})
         .catch(error => console.log(error))
   }
 
   handleFormReset = () => {
-    this.setState({
-      name: " ", 
-      price: 0, 
-      imgurl: " ", 
-      toggleEdit: false
-    })
-}
+    if (this.props.match.params.id) {
+      this.props.history.push('/');
+    } else {
+      this.setState({
+        name: '',
+        price: 0,
+        imgurl: '',
+        toggleEdit: false
+      })
+    }
+  }
 
   render() {
     const {name, price, imgurl, toggleEdit} = this.state
